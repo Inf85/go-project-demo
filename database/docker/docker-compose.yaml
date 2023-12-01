@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:14.1-alpine
+    container_name: go-demo-database
+    environment:
+      - POSTGRES_DB=demo_dev
+      - POSTGRES_USER=demo_user
+      - POSTGRES_PASSWORD=123456
+    ports:
+      - '54323:5432'
+    volumes:
+      - db:/var/lib/postgresql/data
+volumes:
+  db:
+    driver: local
